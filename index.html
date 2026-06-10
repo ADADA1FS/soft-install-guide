@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>软装手册</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ===== PMT 暖纸色调系统 ===== */
+:root{
+  --bg-page:#0f0b18;
+  --bg-card:#ffffff;
+  --bg-soft:#ece7df;
+  --bg-warm:#faf8f5;
+  --night-1:#0f0b18;
+  --night-2:#161124;
+  --night-3:#1d1533;
+
+  --ink:rgba(30,26,22,0.92);
+  --ink-muted:#6b6258;
+  --ink-faint:#a09888;
+
+  --line:#e3dcd2;
+  --line-light:#ede8e0;
+
+  --gold:#c8893a;
+  --gold-dark:#a06b28;
+  --gold-soft:#f7efe3;
+
+  --blue:#3b6ea5;
+  --blue-soft:#eef3f9;
+  --blue-line:#c9d8e8;
+
+  --rose:#b3776e;
+  --rose-soft:#f5edec;
+
+  --ok:#5a8f5a;
+  --ok-soft:#edf5ed;
+  --ok-line:#bad4ba;
+
+  --warn:#c8893a;
+  --warn-soft:#f7efe3;
+
+  --radius:28px;
+  --shadow-sm:0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md:0 3px 10px rgba(0,0,0,0.055),0 1.5px 4px rgba(0,0,0,0.03);
+  --shadow-lg:0 6px 24px rgba(15,11,24,0.25),0 3px 8px rgba(15,11,24,0.12);
+}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{font-size:15px}
+body{
+  font-family:'Inter',-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;
+  background:#06070a;
+  color:var(--ink);
+  min-height:100vh;-webkit-font-smoothing:antialiased;
+  position:relative
+}
+
+/* ===== 星辰苍穹 + 星云 ===== */
+body::before{
+  content:'';position:fixed;inset:0;z-index:-1;
+  background-color:#06070a;
+  background-image:
+    radial-gradient(ellipse at 55% 15%, rgba(25,18,50,.35) 0, transparent 55%),
+    radial-gradient(ellipse at 25% 50%, rgba(18,25,45,.25) 0, transparent 40%),
+    radial-gradient(ellipse at 75% 65%, rgba(35,20,30,.2) 0, transparent 45%),
+    radial-gradient(.5px .5px at 4% 3%, rgba(255,240,210,.6) 0, transparent 100%),
+    radial-gradient(1px 1px at 10% 8%, rgba(255,240,210,.8) 0, transparent 100%),
+    radial-gradient(1px 1px at 23% 14%, rgba(255,240,210,.6) 0, transparent 100%),
+    radial-gradient(1.5px 1.5px at 35% 4%, rgba(255,240,210,.9) 0, transparent 100%),
+    radial-gradient(1px 1px at 48% 22%, rgba(255,240,210,.5) 0, transparent 100%),
+    radial-gradient(1px 1px at 67% 9%, rgba(255,240,210,.7) 0, transparent 100%),
+    radial-gradient(1.5px 1.5px at 80% 18%, rgba(255,240,210,.8) 0, transparent 100%),
+    radial-gradient(1px 1px at 92% 6%, rgba(255,240,210,.6) 0, transparent 100%),
+    radial-gradient(1px 1px at 5% 28%, rgba(255,240,210,.5) 0, transparent 100%),
+    radial-gradient(1px 1px at 18% 35%, rgba(255,240,210,.7) 0, transparent 100%),
+    radial-gradient(1.5px 1.5px at 30% 42%, rgba(255,240,210,.6) 0, transparent 100%),
+    radial-gradient(1px 1px at 55% 30%, rgba(255,240,210,.4) 0, transparent 100%),
+    radial-gradient(1px 1px at 72% 38%, rgba(255,240,210,.7) 0, transparent 100%),
+    radial-gradient(1.5px 1.5px at 88% 46%, rgba(255,240,210,.9) 0, transparent 100%),
+    radial-gradient(1px 1px at 42% 52%, rgba(255,240,210,.5) 0, transparent 100%),
+    radial-gradient(1px 1px at 63% 58%, rgba(255,240,210,.6) 0, transparent 100%),
+    radial-gradient(1px 1px at 15% 65%, rgba(255,240,210,.4) 0, transparent 100%),
+    radial-gradient(1.5px 1.5px at 50% 72%, rgba(200,160,100,.3) 0, transparent 100%),
+    radial-gradient(1px 1px at 76% 68%, rgba(255,240,210,.5) 0, transparent 100%),
+    radial-gradient(1px 1px at 90% 55%, rgba(255,240,210,.6) 0, transparent 100%),
+    radial-gradient(1px 1px at 25% 80%, rgba(255,240,210,.3) 0, transparent 100%),
+    radial-gradient(1.5px 1.5px at 8% 48%, rgba(200,160,100,.4) 0, transparent 100%),
+    radial-gradient(1px 1px at 60% 85%, rgba(255,240,210,.4) 0, transparent 100%);
+  animation:twinkle 5s ease-in-out infinite alternate
+}
+
+@keyframes twinkle{
+  0%{opacity:.85}
+  50%{opacity:1}
+  100%{opacity:.8}
+}
+
+/* ===== 流星雨 — 发丝拖尾 + 冲击粒子 ===== */
+.meteor{
+  position:fixed;z-index:-1;pointer-events:none;
+  width:1px;height:.5px;
+  background:linear-gradient(90deg,transparent 20%,rgba(255,245,230,.04) 40%,rgba(255,240,210,.2) 65%,rgba(255,248,236,.45) 85%,#fff8e8);
+  opacity:0;border-radius:0;
+  transform:rotate(45deg)
+}
+.meteor .hd{
+  position:absolute;right:-1.5px;top:-1px;
+  width:3px;height:3px;border-radius:50%;
+  background:radial-gradient(circle,#fffef8 0%,#ffe8b8 40%,rgba(255,232,184,.3) 70%,transparent 100%);
+  box-shadow:0 0 4px 2px rgba(255,232,184,.35),0 0 10px 5px rgba(255,232,184,.12)
+}
+@keyframes meteorFall{
+  0%{opacity:0;transform:rotate(var(--angle,25deg)) translateX(0)}
+  2%{opacity:1}
+  50%{opacity:1}
+  65%{transform:rotate(var(--angle,25deg)) translateX(var(--dist,800px));opacity:0}
+  100%{transform:rotate(var(--angle,25deg)) translateX(calc(var(--dist,800px)*1.1));opacity:0}
+}
+
+/* 冲击散落粒子 — 拖尾长短不一 */
+.mparticle{
+  position:fixed;z-index:-1;pointer-events:none;
+  height:1px;border-radius:0;
+  opacity:0
+}
+.mparticle::after{
+  content:'';position:absolute;right:0;top:-.5px;
+  width:2px;height:2px;border-radius:50%;
+  background:#fffef5;
+  box-shadow:0 0 3px 2px rgba(255,240,210,.25)
+}
+@keyframes scatter{
+  0%{opacity:.8;transform:translate(0,0)}
+  15%{opacity:.5}
+  40%{opacity:.2}
+  100%{opacity:0;transform:translate(var(--dx),var(--dy))}
+}
+
+/* 头部溅射小粒子 */
+.msplash{
+  position:fixed;z-index:-1;pointer-events:none;
+  border-radius:50%;
+  opacity:0
+}
+@keyframes splash{
+  0%{opacity:.9;transform:translate(0,0) scale(1)}
+  20%{opacity:.6;transform:translate(var(--sx),var(--sy)) scale(.6)}
+  50%{opacity:.2;transform:translate(calc(var(--sx)*1.5),calc(var(--sy)*1.5)) scale(.25)}
+  100%{opacity:0;transform:translate(calc(var(--sx)*2),calc(var(--sy)*2)) scale(.05)}
+}
+
+/* 空气摩擦火花 — 微型、短命、向后溅射 */
+.spark{
+  position:fixed;z-index:-1;pointer-events:none;
+  border-radius:50%;
+  background:rgba(255,250,235,.8);
+  box-shadow:0 0 2px .5px rgba(255,232,180,.4);
+  opacity:0
+}
+/* Scrollbar */
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--line);border-radius:9999px}
+::-webkit-scrollbar-thumb:hover{background:var(--ink-faint)}
+
+.wrap{max-width:1480px;margin:0 auto;display:flex;flex-direction:column;min-height:100vh}
+
+/* ===== TOP NAV — 暖纸招牌导航 ===== */
+.top-nav{
+  height:62px;display:flex;align-items:center;padding:0 32px;
+  background:rgba(255,255,252,0.92);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:2px solid var(--line-light);
+  position:sticky;top:0;z-index:100;
+  box-shadow:0 1px 0 rgba(200,137,58,0.06)
+}
+.top-nav .logo{
+  font-size:20px;font-weight:700;margin-right:44px;letter-spacing:-.4px;
+  display:flex;align-items:center;gap:8px;
+  background:linear-gradient(135deg,var(--gold-dark),var(--gold));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;position:relative
+}
+.top-nav .logo svg{flex-shrink:0;-webkit-text-fill-color:initial;width:20px;height:20px}
+.top-nav .logo::after{
+  content:'';position:absolute;right:-22px;top:50%;margin-top:-7px;
+  width:1px;height:14px;background:var(--line);
+  opacity:.5
+}
+.nav-cats{display:flex;align-items:stretch;gap:0;height:100%}
+.nav-cats a{
+  display:flex;align-items:center;padding:0 16px;
+  font-size:13px;font-weight:500;color:var(--ink-muted);
+  text-decoration:none;position:relative;
+  transition:all .15s;white-space:nowrap;
+  letter-spacing:.2px;
+  border-bottom:2px solid transparent
+}
+.nav-cats a:hover{color:var(--ink)}
+.nav-cats a.active{color:var(--gold-dark);font-weight:600;border-bottom-color:var(--gold)}
+
+/* ===== 3-COL LAYOUT (centered, locked) ===== */
+.layout{
+  display:flex;flex:1;gap:0;
+  background:var(--bg-card);
+  margin:20px 32px 30px;
+  border:1px solid var(--line-light);
+  border-radius:var(--radius);
+  overflow:hidden;
+  box-shadow:var(--shadow-lg)
+}
+
+/* ===== SIDEBAR 1/5 ===== */
+.sidebar{
+  width:20%;min-width:200px;padding:22px 0 40px;
+  background:var(--bg-warm);
+  border-right:1px solid var(--line-light);
+  height:calc(100vh - 98px);position:sticky;top:78px;overflow-y:auto
+}
+.sidebar .sec{
+  font-size:10px;font-weight:600;color:var(--ink-faint);letter-spacing:.9px;
+  padding:4px 24px;margin-top:18px;text-transform:uppercase
+}
+.sidebar a{
+  display:flex;align-items:center;padding:6px 24px;
+  font-size:13px;color:var(--ink-muted);
+  border-left:3px solid transparent;
+  transition:all .12s;text-decoration:none
+}
+.sidebar a:hover{background:var(--bg-soft);color:var(--ink)}
+.sidebar a.active{
+  border-left-color:var(--gold);
+  background:var(--gold-soft);
+  color:var(--gold-dark);font-weight:600
+}
+.sidebar a .d{
+  width:5px;height:5px;border-radius:50%;
+  background:var(--line);margin-right:12px;flex-shrink:0;
+  transition:all .2s
+}
+.sidebar a:hover .d{background:var(--ink-faint)}
+.sidebar a.active .d{background:var(--gold);width:6px;height:6px}
+.sidebar .sub{padding-left:44px;font-size:12px;color:var(--ink-faint)}
+.sidebar .sub.active{color:var(--gold-dark)}
+.sidebar .sep{border-top:1px solid var(--line-light);margin:12px 24px}
+
+/* ===== CONTENT 2/5 ===== */
+.content{width:40%;padding:24px 30px 60px;max-width:560px}
+.crumb{
+  font-size:12px;color:var(--ink-faint);margin-bottom:8px;
+  display:flex;align-items:center;gap:4px
+}
+.crumb a{color:var(--ink-muted);text-decoration:none}
+.crumb a:hover{color:var(--gold)}
+.crumb .sep{color:var(--line);margin:0 2px}
+
+.h1{
+  font-size:24px;font-weight:700;color:var(--ink);
+  line-height:1.3;margin-bottom:3px;letter-spacing:-.3px
+}
+.meta{
+  font-size:12px;color:var(--ink-faint);margin-bottom:16px;
+  display:flex;align-items:center;gap:6px
+}
+
+/* Process flow bar */
+.mbar{
+  border:1px solid var(--line-light);border-radius:14px;
+  padding:12px 18px;margin-bottom:16px;
+  background:var(--bg-warm);
+  position:relative;overflow:hidden
+}
+.mbar .lb{
+  font-size:10px;color:var(--ink-faint);margin-bottom:8px;
+  font-weight:600;letter-spacing:.5px;text-transform:uppercase
+}
+.mf{display:flex;align-items:center;gap:4px;flex-wrap:wrap}
+.mf .m{
+  display:flex;align-items:center;gap:5px;
+  padding:4px 10px 4px 8px;
+  background:var(--bg-card);
+  border:1px solid var(--line);
+  border-radius:9999px;
+  font-size:11px;font-weight:500;color:var(--ink-muted)
+}
+.mf .m .c{
+  width:18px;height:18px;border-radius:50%;
+  background:var(--line-light);color:var(--ink-faint);
+  display:flex;align-items:center;justify-content:center;
+  font-size:8px;font-weight:700;flex-shrink:0
+}
+.mf .m.cur{
+  background:var(--gold-soft);
+  border-color:var(--gold);
+  color:var(--gold-dark);
+  box-shadow:0 0 0 1px rgba(200,137,58,0.15)
+}
+.mf .m.cur .c{background:var(--gold);color:#fff}
+.mf .m.ok{background:var(--ok-soft);border-color:var(--ok-line);color:var(--ok)}
+.mf .m.ok .c{background:var(--ok);color:#fff}
+.mf .a{color:var(--line);font-size:11px;flex-shrink:0}
+
+/* Steps */
+.step{
+  display:flex;gap:11px;margin-bottom:5px;
+  padding:12px 16px;
+  background:var(--bg-card);
+  border:1px solid var(--line-light);
+  border-left:4px solid var(--line-light);
+  border-radius:var(--radius);
+  transition:all .18s;
+  position:relative;overflow:hidden;
+  box-shadow:var(--shadow-sm)
+}
+.step:hover{
+  border-color:var(--line);
+  box-shadow:var(--shadow-md);
+  transform:translateY(-1px)
+}
+.step .n{
+  width:26px;height:26px;min-width:26px;border-radius:50%;
+  background:var(--line-light);color:var(--ink-faint);
+  display:flex;align-items:center;
+  justify-content:center;font-size:11px;font-weight:700;margin-top:2px;
+  transition:all .2s
+}
+.step .b{flex:1;min-width:0}
+.step .b .i{
+  font-size:13px;line-height:1.65;color:var(--ink-muted);margin-bottom:3px
+}
+.step .b .i strong{color:var(--ink);font-weight:600}
+.step .b .i a{
+  color:var(--blue);font-size:12px;font-weight:500;text-decoration:none
+}
+.step .b .i a:hover{text-decoration:underline}
+.step .b .i code{
+  background:var(--bg-soft);padding:1px 6px;border-radius:5px;
+  font-family:'SF Mono','Fira Code',monospace;font-size:11px;
+  color:#b45353;border:1px solid var(--line-light)
+}
+.step .b .cb{
+  position:relative;background:#1e1a16;color:#e6ddd4;
+  padding:6px 36px 6px 12px;border-radius:8px;
+  font-family:'SF Mono','Fira Code',monospace;font-size:11px;line-height:1.55;
+  overflow-x:auto;margin:4px 0;
+  box-shadow:inset 0 1px 3px rgba(0,0,0,0.2)
+}
+.step .b .cb .cp{
+  position:absolute;right:4px;top:4px;
+  width:28px;height:28px;border-radius:5px;
+  background:rgba(255,255,255,0.07);border:none;color:var(--ink-faint);
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  font-size:11px;transition:all .12s;
+  font-family:'Inter',sans-serif
+}
+.step .b .cb .cp:hover{background:rgba(255,255,255,0.14);color:#fff}
+.step .b .cb .cp.done{color:var(--ok);background:rgba(90,143,90,0.18)}
+.step .b .ti{
+  font-size:11px;color:var(--ink-faint);display:block;margin-top:2px;
+  padding-left:2px
+}
+.step .b .ti.w{color:var(--warn);font-weight:500}
+.step .b .ti.o{color:var(--ok);font-weight:500}
+
+/* Step states */
+.step.w{
+  border-left:4px solid var(--gold);
+  background:linear-gradient(135deg,var(--gold-soft),var(--bg-card) 60%);
+  box-shadow:0 0 0 1px rgba(200,137,58,0.1),var(--shadow-md)
+}
+.step.w .n{background:var(--gold);color:#fff}
+.step.ok{
+  border-left:4px solid var(--ok);
+  background:linear-gradient(135deg,var(--ok-soft),var(--bg-card) 60%)
+}
+.step.ok .n{background:var(--ok);color:#fff}
+
+.step-3{
+  border-left:4px solid var(--blue);
+  background:linear-gradient(135deg,var(--blue-soft),var(--bg-card) 60%)
+}
+.step-3 .n{background:var(--blue);color:#fff}
+
+.step-4{
+  border-left:4px solid var(--rose);
+  background:linear-gradient(135deg,var(--rose-soft),var(--bg-card) 60%)
+}
+.step-4 .n{background:var(--rose);color:#fff}
+.sa{
+  text-align:center;color:var(--line);
+  font-size:13px;margin:-3px 0;
+  font-weight:300;user-select:none
+}
+
+/* Thumbnail trigger */
+.step .b .th{
+  display:inline-flex;align-items:center;gap:5px;margin-top:4px;
+  cursor:pointer;
+  border:1px solid var(--line-light);border-radius:9999px;
+  padding:3px 11px 3px 7px;
+  font-size:10px;font-weight:500;color:var(--ink-faint);
+  transition:all .15s;user-select:none
+}
+.step .b .th:hover{
+  border-color:var(--gold);color:var(--gold-dark);
+  background:var(--gold-soft);box-shadow:var(--shadow-sm)
+}
+.step .b .th .pv{
+  width:28px;height:20px;
+  background:linear-gradient(135deg,var(--bg-soft),var(--line-light));
+  border-radius:4px;display:flex;align-items:center;
+  justify-content:center;flex-shrink:0
+}
+.step .b .th .pv svg{width:12px;height:12px;stroke:var(--ink-faint);fill:none;stroke-width:1.5}
+.step .b .th.act{
+  border-color:var(--gold);background:var(--gold-soft);
+  color:var(--gold-dark);box-shadow:var(--shadow-sm)
+}
+.step .b .th.act .pv svg{stroke:var(--gold-dark)}
+
+/* Reference links */
+.rl{margin-top:16px;padding-top:12px;border-top:1px solid var(--line-light)}
+.rl .lb{
+  font-size:10px;color:var(--ink-faint);margin-bottom:8px;
+  font-weight:600;letter-spacing:.5px;text-transform:uppercase
+}
+.rl a{
+  display:inline-block;padding:3px 12px;font-size:12px;font-weight:500;
+  background:var(--bg-warm);color:var(--blue);
+  border-radius:9999px;border:1px solid var(--line-light);
+  margin:0 3px 4px 0;text-decoration:none;transition:all .12s
+}
+.rl a:hover{
+  background:var(--blue-soft);border-color:var(--blue-line);
+  color:var(--blue)
+}
+
+/* ===== RIGHT IMAGE 2/5 ===== */
+.image-area{
+  width:40%;border-left:1px solid var(--line-light);
+  position:sticky;top:78px;height:calc(100vh - 98px);
+  overflow-y:auto;padding:20px 22px 40px;
+  background:linear-gradient(180deg,var(--bg-warm),var(--bg-card) 60%)
+}
+.image-area .il{
+  font-size:10px;color:var(--ink-faint);margin-bottom:12px;
+  font-weight:600;letter-spacing:.5px;text-transform:uppercase
+}
+
+.bi{
+  width:100%;min-height:480px;
+  background:var(--bg-warm);
+  border:1px solid var(--line-light);
+  border-radius:var(--radius);
+  overflow:hidden;position:relative;
+  display:flex;align-items:center;justify-content:center;
+  transition:border-color .2s
+}
+.bi .ph{text-align:center;padding:80px 20px;color:var(--ink-faint)}
+.bi .ph svg{width:52px;height:52px;stroke:var(--line);fill:none;stroke-width:1.2;margin-bottom:10px}
+.bi .ph .ph-txt{font-size:14px;color:var(--ink-faint);margin-top:8px}
+.bi img{width:100%;height:auto;display:block;border-radius:var(--radius)}
+.bi .cap{
+  position:absolute;bottom:0;left:0;right:0;
+  background:linear-gradient(transparent,rgba(30,26,22,.7));
+  color:#eee6dc;padding:40px 16px 12px;font-size:14px;font-weight:500;line-height:1.4
+}
+.bi.loaded{
+  border-color:var(--gold);
+  box-shadow:0 0 0 2px rgba(200,137,58,0.08)
+}
+
+.in{display:flex;gap:5px;margin-top:12px;flex-wrap:wrap}
+.in .m{
+  padding:5px 14px;
+  background:var(--bg-warm);
+  border-radius:9999px;font-size:11px;font-weight:500;
+  color:var(--ink-faint);
+  cursor:pointer;border:1px solid var(--line-light);
+  transition:all .12s;user-select:none
+}
+.in .m:hover{
+  border-color:var(--line);background:var(--bg-soft);color:var(--ink-muted)
+}
+.in .m.act{
+  border-color:var(--gold);background:var(--gold-soft);
+  color:var(--gold-dark);font-weight:600;
+  box-shadow:0 0 0 1px rgba(200,137,58,0.12)
+}
+
+@media(max-width:1100px){
+  .layout{margin:16px 16px 24px}
+}
+@media(max-width:850px){
+  html{font-size:14px}
+  .layout{flex-direction:column;margin:0;border-radius:0;box-shadow:none;border:none}
+  .top-nav{padding:0 16px}
+  .sidebar{display:none}
+  .content{width:100%;max-width:100%}
+  .image-area{width:100%;border-left:none;border-top:1px solid var(--line-light);position:static;height:auto;background:var(--bg-warm)}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<nav class="top-nav">
+  <div class="logo">
+    <svg viewBox="0 0 20 20" width="20" height="20"><path d="M4 3h12v14H4z" fill="none" stroke="currentColor" stroke-width="1.3" rx="2"/><path d="M8 7h4" stroke="currentColor" stroke-width="1.3"/><path d="M8 10h4" stroke="currentColor" stroke-width="1.3"/><path d="M4 3l6 2 6-2" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/></svg>
+    软装手册
+  </div>
+  <div class="nav-cats">
+    <a href="#" class="active">编程语言</a>
+    <a href="#">开发工具</a>
+    <a href="#">系统环境</a>
+    <a href="#">数据库</a>
+    <a href="#">AI</a>
+  </div>
+</nav>
+
+<div class="layout">
+
+<!-- SIDEBAR 1/5 -->
+<aside class="sidebar">
+  <div class="sec">Python</div>
+  <a href="#"><span class="d"></span>简介</a>
+  <a href="#" class="active"><span class="d"></span>环境搭建</a>
+  <a href="#" class="sub">Windows</a>
+  <a href="#" class="sub active">macOS</a>
+  <a href="#" class="sub">Linux</a>
+  <a href="#"><span class="d"></span>基础语法</a>
+  <a href="#"><span class="d"></span>数据类型</a>
+  <div class="sep"></div>
+  <div class="sec">Node.js</div>
+  <a href="#"><span class="d"></span>安装</a>
+  <a href="#"><span class="d"></span>npm</a>
+  <div class="sep"></div>
+  <div class="sec">Git</div>
+  <a href="#"><span class="d"></span>安装</a>
+  <div class="sep"></div>
+  <div class="sec">Docker</div>
+  <a href="#"><span class="d"></span>安装</a>
+  <a href="#"><span class="d"></span>WSL2</a>
+</aside>
+
+<!-- CONTENT 2/5 -->
+<main class="content">
+
+<div class="crumb"><a href="#">编程语言</a><span class="sep">/</span><a href="#">Python</a><span class="sep">/</span>环境搭建</div>
+<h1 class="h1">Python 环境搭建 — Windows</h1>
+<div class="meta">
+  <svg viewBox="0 0 14 14" width="14" height="14" style="stroke:var(--ink-faint);fill:none;stroke-width:1.3"><rect x="2" y="2" width="10" height="11" rx="1.5"/><path d="M2 5h10"/><path d="M5 1v2"/><path d="M9 1v2"/></svg>
+  2026-06-10
+</div>
+
+<div class="mbar">
+  <div class="lb">安装流程</div>
+  <div class="mf">
+    <div class="m ok"><span class="c">&#10003;</span>下载</div><span class="a">&rarr;</span>
+    <div class="m cur"><span class="c">2</span>PATH</div><span class="a">&rarr;</span>
+    <div class="m"><span class="c">3</span>验证</div><span class="a">&rarr;</span>
+    <div class="m"><span class="c">4</span>镜像源</div>
+  </div>
+</div>
+
+<div class="step ok">
+  <span class="n">1</span>
+  <div class="b">
+    <div class="i"><strong>下载安装包</strong> &middot; <a href="https://python.org/downloads">python.org/downloads</a></div>
+    <div class="cb">python.org/downloads<button class="cp" onclick="cp(this)">复制</button></div>
+    <span class="ti o">Windows installer (64-bit) 约 28 MB</span>
+    <div class="th" onclick="si(0)">
+      <span class="pv"><svg viewBox="0 0 14 14"><rect x="2" y="2" width="10" height="10" rx="1"/><circle cx="10" cy="5" r="1"/><path d="M2 9l3-3 3 3 2.5-2.5L13 10"/></svg></span> 下载页面
+    </div>
+  </div>
+</div>
+<div class="sa">&darr;</div>
+
+<div class="step w">
+  <span class="n">2</span>
+  <div class="b">
+    <div class="i"><strong>勾选 Add Python to PATH</strong> &middot; 安装器底部复选框</div>
+    <div class="cb">&#9744; Add Python 3.x to PATH  &rarr;  &#9746; 勾选<button class="cp" onclick="cp(this)">复制</button></div>
+    <span class="ti w">不勾选 &rarr; cmd 报"不是内部命令"</span>
+    <div class="th act" onclick="si(1)">
+      <span class="pv"><svg viewBox="0 0 14 14"><rect x="2" y="2" width="10" height="10" rx="1"/><circle cx="10" cy="5" r="1"/><path d="M2 9l3-3 3 3 2.5-2.5L13 10"/></svg></span> PATH 位置
+    </div>
+  </div>
+</div>
+<div class="sa">&darr;</div>
+
+<div class="step step-3">
+  <span class="n">3</span>
+  <div class="b">
+    <div class="i"><strong>验证安装</strong> &middot; 终端运行</div>
+    <div class="cb">python --version<button class="cp" onclick="cp(this)">复制</button></div>
+    <div class="cb">pip --version<button class="cp" onclick="cp(this)">复制</button></div>
+    <span class="ti">显示版本号 &rarr; 安装成功</span>
+    <div class="th" onclick="si(2)">
+      <span class="pv"><svg viewBox="0 0 14 14"><rect x="2" y="2" width="10" height="10" rx="1"/><circle cx="10" cy="5" r="1"/><path d="M2 9l3-3 3 3 2.5-2.5L13 10"/></svg></span> 验证截图
+    </div>
+  </div>
+</div>
+<div class="sa">&darr;</div>
+
+<div class="step step-4">
+  <span class="n">4</span>
+  <div class="b">
+    <div class="i"><strong>配置国内镜像源</strong> &middot; 加速 pip 下载</div>
+    <div class="cb">pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple<button class="cp" onclick="cp(this)">复制</button></div>
+    <span class="ti o">50 KB/s &rarr; 10 MB/s</span>
+    <div class="th" onclick="si(3)">
+      <span class="pv"><svg viewBox="0 0 14 14"><rect x="2" y="2" width="10" height="10" rx="1"/><circle cx="10" cy="5" r="1"/><path d="M2 9l3-3 3 3 2.5-2.5L13 10"/></svg></span> 速度对比
+    </div>
+  </div>
+</div>
+
+<div class="rl">
+  <div class="lb">相关指南</div>
+  <a href="#">pip 换源</a>
+  <a href="#">venv 虚拟环境</a>
+  <a href="#">VS Code 配置</a>
+  <a href="#">Anaconda</a>
+  <a href="#">环境变量</a>
+  <a href="#">macOS 安装</a>
+  <a href="#">Linux 安装</a>
+</div>
+
+</main>
+
+<!-- RIGHT IMAGE 2/5 -->
+<aside class="image-area">
+  <div class="il">示意图</div>
+  <div class="bi" id="bi">
+    <div class="ph" id="ph">
+      <svg viewBox="0 0 48 48"><rect x="6" y="6" width="36" height="36" rx="8"/><circle cx="24" cy="22" r="7"/><path d="M12 34l8-12 6 7 6-9 10 14"/></svg>
+      <div class="ph-txt">点击左侧「查看图片」</div>
+    </div>
+    <img id="bii" src="" alt="" style="display:none">
+    <div class="cap" id="bic" style="display:none"></div>
+  </div>
+  <div class="in">
+    <div class="m act" onclick="si(0)">下载</div>
+    <div class="m" onclick="si(1)">PATH</div>
+    <div class="m" onclick="si(2)">验证</div>
+    <div class="m" onclick="si(3)">镜像</div>
+  </div>
+</aside>
+
+</div>
+</div>
+
+<script>
+var dimg = [
+  {t:'下载页面 — 主下载按钮位置',bg:'#f7efe3'},
+  {t:'PATH 复选框 — 安装器底部特写',bg:'#fcf6ea'},
+  {t:'终端验证 — python --version 输出',bg:'#edf5ed'},
+  {t:'速度对比 — 50KB/s vs 10MB/s',bg:'var(--bg-warm)'}
+];
+function si(idx){
+  var d=dimg[idx];
+  var bi=document.getElementById('bi'),ph=document.getElementById('ph'),biimg=document.getElementById('bii'),bic=document.getElementById('bic');
+  ph.style.display='none';biimg.style.display='block';
+  var c=document.createElement('canvas');c.width=800;c.height=500;
+  var ctx=c.getContext('2d');
+  ctx.fillStyle=d.bg||'#faf8f5';ctx.fillRect(0,0,800,500);
+  ctx.fillStyle='rgba(30,26,22,0.85)';ctx.font='22px Inter,sans-serif';ctx.textAlign='center';
+  ctx.fillText(d.t,400,220);
+  ctx.font='14px Inter,sans-serif';ctx.fillStyle='#6b6258';
+  ctx.fillText('高清示意图 — 部署后替换为真实截图',400,260);
+  biimg.src=c.toDataURL();
+  bic.textContent=d.t;bic.style.display='block';
+  bi.classList.add('loaded');
+  document.querySelectorAll('.th,.in .m').forEach(function(e,i){
+    if(e.closest('.th')||e.closest('.in')) e.classList.toggle('act',i===idx);
+  });
+}
+function cp(el){
+  var cb=el.closest('.cb');if(!cb)return;
+  var txt=cb.textContent.replace('复制','').trim();
+  navigator.clipboard.writeText(txt).then(function(){
+    el.textContent='✓';el.classList.add('done');
+    setTimeout(function(){el.textContent='复制';el.classList.remove('done')},1200);
+  });
+}
+// ========== 流星雨生成器 ==========
+(function(){
+  var nMeteors=50,rad25=0.436;
+  for(var i=0;i<nMeteors;i++){
+    var m=document.createElement('div');
+    m.className='meteor';
+    var top,left,dist;
+    if(i%2===0){
+      top=-100+Math.random()*650;
+      left=-50-Math.random()*350;
+      dist=1400+Math.random()*600;
+    }else{
+      top=-30-Math.random()*370;
+      left=0+Math.random()*900;
+      dist=900+Math.random()*500;
+    }
+    var dur=8+Math.random()*5;
+    var delay=Math.random()*20;
+    var tail=80+Math.random()*500;
+    m.style.cssText='top:'+top+'px;left:'+left+'px;width:'+tail+'px;animation:meteorFall '+dur+'s linear infinite;animation-delay:'+delay+'s';
+    m.style.setProperty('--dist',dist+'px');
+    m.style.setProperty('--angle','25deg');
+    // 发光头部
+    var hd=document.createElement('span');
+    hd.className='hd';
+    m.appendChild(hd);
+    document.body.appendChild(m);
+    // ===== 冲击散落粒子 =====
+    var pn=6+Math.floor(Math.random()*5);
+    for(var j=0;j<pn;j++){
+      var p=document.createElement('div');
+      p.className='mparticle';
+      var midDist=dist*(.4+Math.random()*.3);
+      var pTop=top+Math.sin(rad25)*midDist+Math.random()*18-9;
+      var pLeft=left+Math.cos(rad25)*midDist+Math.random()*18-9;
+      // 360°全方位散射
+      var a=Math.random()*2*Math.PI;
+      var spd=8+Math.random()*25;
+      var dx=Math.cos(a)*spd;
+      var dy=Math.sin(a)*spd;
+      var pDur=.3+Math.random()*.4;
+      var pDelay=delay+(.3+Math.random()*.4);
+      // 粒子拖尾 — 方向朝散射反方向
+      var tDir=Math.atan2(dy,dx);
+      var tLen=15+Math.random()*35;
+      p.style.cssText='top:'+pTop+'px;left:'+(pLeft-tLen)+'px;width:'+tLen+'px;height:.8px;animation:scatter '+pDur+'s ease-out infinite;animation-delay:'+pDelay+'s';
+      // 尾部渐变 — 从头部向后淡出
+      var deg=((tDir*180/Math.PI)+180)%360;
+      p.style.background='linear-gradient('+deg+'deg,transparent 20%,rgba(255,240,210,0.15) 40%,rgba(255,238,220,0.5) 70%,#fffef5 95%)';
+      p.style.setProperty('--dx',dx+'px');
+      p.style.setProperty('--dy',dy+'px');
+      document.body.appendChild(p);
+    }
+    // ===== 头部摩擦溅射小粒子 =====
+    var spN=8+Math.floor(Math.random()*7);
+    for(var s=0;s<spN;s++){
+      var sp=document.createElement('div');
+      sp.className='msplash';
+      // 沿流星前段路径散开（0.02~0.5进度）
+      var prog=0.02+Math.random()*0.48;
+      var spX=left+Math.cos(rad25)*dist*prog+(Math.random()-0.5)*10;
+      var spY=top+Math.sin(rad25)*dist*prog+(Math.random()-0.5)*10;
+      // 溅射方向：向后上方，带随机偏差
+      var sAngle=Math.PI+0.3+(Math.random()-0.5)*1.0;
+      var sDist=15+Math.random()*45;
+      var sx=Math.cos(sAngle)*sDist;
+      var sy=Math.sin(sAngle)*sDist;
+      var sDur=0.2+Math.random()*0.4;
+      var sDel=delay+dur*prog+(Math.random()*0.08);
+      var sSz=0.4+Math.random()*0.8;
+      sp.style.cssText='top:'+spY+'px;left:'+spX+'px;width:'+sSz+'px;height:'+sSz+'px;animation:splash '+sDur+'s ease-out infinite;animation-delay:'+sDel+'s';
+      sp.style.setProperty('--sx',sx+'px');
+      sp.style.setProperty('--sy',sy+'px');
+      document.body.appendChild(sp);
+    }
+  }
+})();
+si(0);
+</script>
+</body>
+</html>
